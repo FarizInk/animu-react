@@ -69,26 +69,11 @@ export default function App() {
         </Toolbar>
       </AppBar>
       <main>
-        <Container className={classes.cardGrid} maxWidth="lg">
+        <Container maxWidth="lg">
           <IndexRouter/>
         </Container>
+        <Nav/>
       </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <MadeWithLove />
-      </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }

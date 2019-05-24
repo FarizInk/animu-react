@@ -7,9 +7,11 @@
     "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
     "react": "^16.8.6",
+    "react-device-detect": "^1.6.2",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
+    "react-swipeable-views": "^0.13.3",
     "typeface-roboto": "0.0.54"
   },
   "scripts": {
