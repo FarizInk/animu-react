@@ -15,7 +15,9 @@ export default function UserPage(props) {
   useEffect(() => {
     const getUser = async () => {
       // Pass our param (:id) to the API call
-      const { data } = await axios(`https://api.github.com/users/${props.match.params.id}`)
+      const { data } = await axios(`https://api.github.com/users/farizink`)
+
+      console.log(data);
 
       // Update state
       setUser(data)
@@ -23,7 +25,7 @@ export default function UserPage(props) {
 
     // Invoke the async function
     getUser()
-  }, []) // Don't forget the `[]`, which will prevent useEffect from running in an infinite loop
+  }) // Don't forget the `[]`, which will prevent useEffect from running in an infinite loop
 
   // Return a table with some data from the API.
   return user.loading ? (
