@@ -6,6 +6,10 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
 import axios from "axios";
+import Button from "@material-ui/core/Button";
+import ArrowForward from "@material-ui/icons/ArrowForward";
+import ArrowBack from "@material-ui/icons/ArrowBack";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -22,34 +26,82 @@ const useStyles = makeStyles(theme => ({
   },
   cover: {
     width: 151
+  },
+  button: {
+    margin: theme.spacing(1)
+  },
+  leftIcon: {
+    marginRight: theme.spacing(1)
+  },
+  rightIcon: {
+    marginLeft: theme.spacing(1)
   }
 }));
 
-function MediaControlCard(props) {
+function TopAnimePage(props) {
   const classes = useStyles();
   const dataState = {
     data: {},
     loading: true
   };
+  const pageState = '';
   const [data, setData] = useState(dataState);
+  const [page, setPage] = useState(pageState);
+
+  const getData = async (type, page) => {
+    await axios(`https://api.jikan.moe/v3/top/anime/${page}/${type}`)
+      .then(function(response) {
+        setData(response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+        setData('')
+      });
+  };
+
+  function checkpage() {
+    console.log(page);
+  }
 
   useEffect(() => {
-    const getData = async () => {
-      const { data } = await axios(
-        `https://api.jikan.moe/v3/top/anime/${props.match.params.page}/${props.match.params.type}`
-      );
+    if (page != props.match.params.type + '/' + props.match.params.page) {
+      getData(props.match.params.type, props.match.params.page);
+      setPage(props.match.params.type + '/' + props.match.params.page)
+      // console.log(props.match.params.type + '/' + props.match.params.page);
+    } else {
+      console.log('page yang sama');
+    }
+    // checkpage()
+  });
 
-      setData(data);
-    };
-    getData();
-  }, []);
+  function handleNextPage() {
+    setData({
+      data: {},
+      loading: true
+    });
+    window.scrollTo(0, 0);
+    getData(props.match.params.type, parseInt(props.match.params.page) + 1);
+    console.log(parseInt(props.match.params.page) + 1);
+  }
+
+  function handlePrevPage() {
+    setData({
+      data: {},
+      loading: true
+    });
+    window.scrollTo(0, 0);
+    getData(props.match.params.type, parseInt(props.match.params.page) - 1);
+    console.log(parseInt(props.match.params.page) - 1);
+  }
 
   return data.loading ? (
     <div>Loading...</div>
+  ) : ((data == '') ? (
+    <center><h1> Data Not Found. </h1></center>
   ) : (
     <div>
       {data.top.map((anime, index) => (
-          <Card className={classes.card}>
+        <Card className={classes.card} key={anime.rank}>
           <CardMedia
             className={classes.cover}
             image={anime.image_url}
@@ -68,9 +120,44 @@ function MediaControlCard(props) {
           </div>
         </Card>
       ))}
-      
+      <center>
+        {props.match.params.page == 1 ? (
+          ""
+        ) : (
+          <Link
+            to={`/top/${props.match.params.type}/${parseInt(
+              props.match.params.page
+            ) - 1}`}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handlePrevPage}
+              className={classes.button}
+            >
+              <ArrowBack className={classes.leftIcon} />
+              PREV
+            </Button>
+          </Link>
+        )}
+        <Link
+          to={`/top/${props.match.params.type}/${parseInt(
+            props.match.params.page
+          ) + 1}`}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            onClick={handleNextPage}
+          >
+            NEXT
+            <ArrowForward className={classes.rightIcon} />
+          </Button>
+        </Link>
+      </center>
     </div>
-  );
+  ));
 }
 
-export default MediaControlCard;
+export default TopAnimePage;

@@ -13,7 +13,7 @@ export default function IndexRouter() {
       <Switch>
         <Route exact path="/" component={IndexPage} />
         <Route path="/top/:type/:page" component={TopAnimePage} />
-        <Route path="/schedule" component={UserPage} />
+        <Route path="/schedule" component={ScheduleAnimePage} />
         <Route path="/genre" component={GenreAnimePage} />
         <Route path="/season" component={SeasonAnimePage} />
       </Switch>
