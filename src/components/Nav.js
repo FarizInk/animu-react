@@ -1,25 +1,16 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import Search from "@material-ui/icons/Search";
-import Dialog from "@material-ui/core/Dialog";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItem from "@material-ui/core/ListItem";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import CloseIcon from "@material-ui/icons/Close";
-import Slide from "@material-ui/core/Slide";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import { AppBar, Toolbar, Typography, IconButton, Dialog, ListItemText, ListItem, List, Divider, Slide, ListItemIcon, SwipeableDrawer } from "@material-ui/core";
+import {
+  Menu as MenuIcon,
+  Search as SearchIcon,
+  Close as CloseIcon,
+  Star as StarIcon,
+  Schedule as ScheduleIcon,
+  Label as LabelIcon,
+  Event as EventIcon
+} from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import StarIcon from "@material-ui/icons/Star";
-import ScheduleIcon from "@material-ui/icons/Schedule";
-import LabelIcon from "@material-ui/icons/Label";
-import EventIcon from "@material-ui/icons/Event";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -97,7 +88,7 @@ export default function Nav() {
             </Link>
           </Typography>
           <IconButton color="inherit" onClick={handleClickOpen}>
-            <Search />
+            <SearchIcon />
           </IconButton>
         </Toolbar>
       </AppBar>

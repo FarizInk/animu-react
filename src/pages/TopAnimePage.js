@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import Chip from "@material-ui/core/Chip";
 import axios from "axios";
-import Button from "@material-ui/core/Button";
-import ArrowForward from "@material-ui/icons/ArrowForward";
-import ArrowBack from "@material-ui/icons/ArrowBack";
+import {ArrowBack, ArrowForward } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { CardActionArea, CardActions, Grid } from "@material-ui/core";
+import { Grid, Card, CardContent, CardMedia, Typography, Chip, Button,  } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -184,8 +177,8 @@ function TopAnimePage(props) {
         <div>
           <Grid container spacing={3}>
             {data.top.map((anime, index) => (
-              <Grid item md={6} sm={12} xs={12}>
-                <Card className={classes.card} key={anime.rank}>
+              <Grid item md={6} sm={12} xs={12} key={anime.rank}>
+                <Card className={classes.card}>
                   <div>
                     <CardMedia
                       className={classes.cover}
@@ -209,7 +202,7 @@ function TopAnimePage(props) {
                         <b>{anime.title}</b>
                       </Typography>
                       <Typography variant="subtitle1" color="textSecondary">
-                        {anime.type}
+                        {anime.type}{(props.match.params.type != 'upcoming' ? ', ' + anime.episodes + ' Episodes' : '')}
                       </Typography>
                     </CardContent>
                   </div>
