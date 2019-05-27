@@ -11,7 +11,7 @@ class ShowTheLocation extends React.Component {
   };
 
   render() {
-    const { match, location, history } = this.props;
+    const { location } = this.props;
 
     return (
         <div>You are now at {location.pathname}</div>

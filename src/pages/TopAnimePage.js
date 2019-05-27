@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import {ArrowBack, ArrowForward } from "@material-ui/icons";
+import { ArrowBack, ArrowForward } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { Grid, Card, CardContent, CardMedia, Typography, Chip, Button,  } from "@material-ui/core";
+import {
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Chip,
+  Button
+} from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -51,7 +59,7 @@ function TopAnimePage(props) {
     data: {},
     loading: true
   };
-  const pageState = "";
+  const pageState = null;
   const [data, setData] = useState(dataState);
   const [page, setPage] = useState(pageState);
 
@@ -72,14 +80,18 @@ function TopAnimePage(props) {
   };
 
   useEffect(() => {
-    if (page != props.match.params.type + "/" + props.match.params.page) {
+    checkPage();
+  });
+
+  function checkPage() {
+    if (page !== props.match.params.type + "/" + props.match.params.page) {
       getData(props.match.params.type, props.match.params.page);
       setPage(props.match.params.type + "/" + props.match.params.page);
       // console.log(props.match.params.type + '/' + props.match.params.page);
     } else {
-      console.log("page yang sama");
+      // console.log("page yang sama");
     }
-  });
+  }
 
   function handleNextPage() {
     getData(props.match.params.type, parseInt(props.match.params.page) + 1);
@@ -96,7 +108,7 @@ function TopAnimePage(props) {
       <Link to="/top/upcoming/1" style={styles.link}>
         <Button
           variant={
-            props.match.params.type == "upcoming" ? "outlined" : "contained"
+            props.match.params.type === "upcoming" ? "outlined" : "contained"
           }
           size="medium"
           color="primary"
@@ -108,7 +120,7 @@ function TopAnimePage(props) {
       <Link to="/top/airing/1" style={styles.link}>
         <Button
           variant={
-            props.match.params.type == "airing" ? "outlined" : "contained"
+            props.match.params.type === "airing" ? "outlined" : "contained"
           }
           size="medium"
           color="primary"
@@ -119,7 +131,7 @@ function TopAnimePage(props) {
       </Link>
       <Link to="/top/tv/1" style={styles.link}>
         <Button
-          variant={props.match.params.type == "tv" ? "outlined" : "contained"}
+          variant={props.match.params.type === "tv" ? "outlined" : "contained"}
           size="medium"
           color="primary"
           className={classes.margin}
@@ -130,7 +142,7 @@ function TopAnimePage(props) {
       <Link to="/top/movie/1" style={styles.link}>
         <Button
           variant={
-            props.match.params.type == "movie" ? "outlined" : "contained"
+            props.match.params.type === "movie" ? "outlined" : "contained"
           }
           size="medium"
           color="primary"
@@ -141,7 +153,7 @@ function TopAnimePage(props) {
       </Link>
       <Link to="/top/ova/1" style={styles.link}>
         <Button
-          variant={props.match.params.type == "ova" ? "outlined" : "contained"}
+          variant={props.match.params.type === "ova" ? "outlined" : "contained"}
           size="medium"
           color="primary"
           className={classes.margin}
@@ -152,7 +164,7 @@ function TopAnimePage(props) {
       <Link to="/top/special/1" style={styles.link}>
         <Button
           variant={
-            props.match.params.type == "special" ? "outlined" : "contained"
+            props.match.params.type === "special" ? "outlined" : "contained"
           }
           size="medium"
           color="primary"
@@ -169,7 +181,7 @@ function TopAnimePage(props) {
       {button}
       {data.loading ? (
         <div>Loading...</div>
-      ) : data == "" ? (
+      ) : data === "" ? (
         <center>
           <h1> Data Not Found. </h1>
         </center>
@@ -202,7 +214,10 @@ function TopAnimePage(props) {
                         <b>{anime.title}</b>
                       </Typography>
                       <Typography variant="subtitle1" color="textSecondary">
-                        {anime.type}{(props.match.params.type != 'upcoming' ? ', ' + anime.episodes + ' Episodes' : '')}
+                        {anime.type}
+                        {props.match.params.type !== "upcoming"
+                          ? ", " + anime.episodes + " Episodes"
+                          : ""}
                       </Typography>
                     </CardContent>
                   </div>
@@ -213,7 +228,7 @@ function TopAnimePage(props) {
           <div
             style={{ textAlign: "right", marginBottom: 12, marginRight: -8 }}
           >
-            {props.match.params.page == 1 ? (
+            {props.match.params.page === 1 ? (
               ""
             ) : (
               <Link

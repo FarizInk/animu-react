@@ -6,7 +6,6 @@ import TopAnimePage from '../pages/TopAnimePage';
 import ScheduleAnimePage from '../pages/ScheduleAnimePage';
 import GenreAnimePage from '../pages/GenreAnimePage';
 import SeasonAnimePage from '../pages/SeasonAnimePage';
-import UserPage from '../pages/UserPage';
 
 export default function IndexRouter() {
   return (
