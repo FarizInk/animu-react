@@ -53,7 +53,9 @@ const styles = {
   }
 };
 
-function TopAnimePage(props) {
+function TopAnimePage(props) {  
+  const pageType = props.match.params.type;
+  const pageNumber = props.match.params.page;
   const classes = useStyles();
   const dataState = {
     data: {},
@@ -69,7 +71,7 @@ function TopAnimePage(props) {
       loading: true
     });
     window.scrollTo(0, 0);
-    await axios(`https://api.jikan.moe/v3/top/anime/${page}/${type}`)
+    await axios(`${process.env.REACT_APP_API_URL}top/anime/${page}/${type}`)
       .then(function(response) {
         setData(response.data);
       })
@@ -80,27 +82,28 @@ function TopAnimePage(props) {
   };
 
   useEffect(() => {
+    document.title = "Top " + pageType.charAt(0).toUpperCase() + pageType.slice(1) + " - " + process.env.REACT_APP_NAME;
     checkPage();
   });
 
   function checkPage() {
-    if (page !== props.match.params.type + "/" + props.match.params.page) {
-      getData(props.match.params.type, props.match.params.page);
-      setPage(props.match.params.type + "/" + props.match.params.page);
-      // console.log(props.match.params.type + '/' + props.match.params.page);
+    if (page !== pageType + "/" + pageNumber) {
+      getData(pageType, pageNumber);
+      setPage(pageType + "/" + pageNumber);
+      // console.log(pageType + '/' + pageNumber);
     } else {
       // console.log("page yang sama");
     }
   }
 
   function handleNextPage() {
-    getData(props.match.params.type, parseInt(props.match.params.page) + 1);
-    console.log(parseInt(props.match.params.page) + 1);
+    getData(pageType, parseInt(pageNumber) + 1);
+    console.log(parseInt(pageNumber) + 1);
   }
 
   function handlePrevPage() {
-    getData(props.match.params.type, parseInt(props.match.params.page) - 1);
-    console.log(parseInt(props.match.params.page) - 1);
+    getData(pageType, parseInt(pageNumber) - 1);
+    console.log(parseInt(pageNumber) - 1);
   }
 
   const button = (
@@ -108,7 +111,7 @@ function TopAnimePage(props) {
       <Link to="/top/upcoming/1" style={styles.link}>
         <Button
           variant={
-            props.match.params.type === "upcoming" ? "outlined" : "contained"
+            pageType === "upcoming" ? "outlined" : "contained"
           }
           size="medium"
           color="primary"
@@ -120,7 +123,7 @@ function TopAnimePage(props) {
       <Link to="/top/airing/1" style={styles.link}>
         <Button
           variant={
-            props.match.params.type === "airing" ? "outlined" : "contained"
+            pageType === "airing" ? "outlined" : "contained"
           }
           size="medium"
           color="primary"
@@ -131,7 +134,7 @@ function TopAnimePage(props) {
       </Link>
       <Link to="/top/tv/1" style={styles.link}>
         <Button
-          variant={props.match.params.type === "tv" ? "outlined" : "contained"}
+          variant={pageType === "tv" ? "outlined" : "contained"}
           size="medium"
           color="primary"
           className={classes.margin}
@@ -142,7 +145,7 @@ function TopAnimePage(props) {
       <Link to="/top/movie/1" style={styles.link}>
         <Button
           variant={
-            props.match.params.type === "movie" ? "outlined" : "contained"
+            pageType === "movie" ? "outlined" : "contained"
           }
           size="medium"
           color="primary"
@@ -153,7 +156,7 @@ function TopAnimePage(props) {
       </Link>
       <Link to="/top/ova/1" style={styles.link}>
         <Button
-          variant={props.match.params.type === "ova" ? "outlined" : "contained"}
+          variant={pageType === "ova" ? "outlined" : "contained"}
           size="medium"
           color="primary"
           className={classes.margin}
@@ -164,7 +167,7 @@ function TopAnimePage(props) {
       <Link to="/top/special/1" style={styles.link}>
         <Button
           variant={
-            props.match.params.type === "special" ? "outlined" : "contained"
+            pageType === "special" ? "outlined" : "contained"
           }
           size="medium"
           color="primary"
@@ -215,7 +218,7 @@ function TopAnimePage(props) {
                       </Typography>
                       <Typography variant="subtitle1" color="textSecondary">
                         {anime.type}
-                        {props.match.params.type !== "upcoming"
+                        {pageType !== "upcoming"
                           ? ", " + anime.episodes + " Episodes"
                           : ""}
                       </Typography>
@@ -228,12 +231,12 @@ function TopAnimePage(props) {
           <div
             style={{ textAlign: "right", marginBottom: 12, marginRight: -8 }}
           >
-            {props.match.params.page === 1 ? (
+            {pageNumber === '1' ? (
               ""
             ) : (
               <Link
-                to={`/top/${props.match.params.type}/${parseInt(
-                  props.match.params.page
+                to={`/top/${pageType}/${parseInt(
+                  pageNumber
                 ) - 1}`}
               >
                 <Button
@@ -248,8 +251,8 @@ function TopAnimePage(props) {
               </Link>
             )}
             <Link
-              to={`/top/${props.match.params.type}/${parseInt(
-                props.match.params.page
+              to={`/top/${pageType}/${parseInt(
+                pageNumber
               ) + 1}`}
             >
               <Button
