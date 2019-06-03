@@ -7,10 +7,11 @@ import ScheduleAnimePage from '../pages/ScheduleAnimePage';
 import GenreAnimePage from '../pages/GenreAnimePage';
 import SeasonAnimePage from '../pages/SeasonAnimePage';
 
-export default function IndexRouter() {
+function IndexRouter() {
+
   return (
       <Switch>
-        <Route exact path="/" component={IndexPage} />
+        <Route exact path='/' component={IndexPage} />
         <Route path="/top/:type/:page" component={TopAnimePage} />
         <Route path="/schedule" component={ScheduleAnimePage} />
         <Route path="/genre" component={GenreAnimePage} />
@@ -18,3 +19,5 @@ export default function IndexRouter() {
       </Switch>
   );
 }
+
+export default IndexRouter;

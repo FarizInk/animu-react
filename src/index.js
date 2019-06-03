@@ -10,7 +10,7 @@ import Favicon from "react-favicon";
 dotenv.config();
 
 render(
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.REACT_APP_BASE_URL}>
     <Favicon url="/assets/img/animu.ico" />
     <App />
   </BrowserRouter>,

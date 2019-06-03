@@ -1,12 +1,16 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
 
 export default function HomePage() {
+
+  useEffect(() => {
+    document.title = process.env.REACT_APP_NAME;
+  });
+
   return (
     <div className="container">
       <h1>Home Page</h1>
       <p>
-        <Link to="/taniarascia">taniarascia</Link> on GitHub.
+        Hello World.
       </p>
     </div>
   )
