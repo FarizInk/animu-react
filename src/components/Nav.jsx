@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,6 +20,18 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
 }));
+
+const titleStyle = {
+  color: 'white',
+  textDecoration: "none"
+};
+
+const linkStyle = {
+  color: 'black',
+  textDecoration: "none",
+  textTransform: 'uppercase',
+  fontWeight: 500
+};
 
 export default function Nav() {
   const classes = useStyles();
@@ -38,7 +51,9 @@ export default function Nav() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            {process.env.REACT_APP_NAME}
+            <Link to="/" style={titleStyle}>
+              {process.env.REACT_APP_NAME}
+            </Link>
           </Typography>
           <div>
             <IconButton
@@ -65,10 +80,18 @@ export default function Nav() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Top</MenuItem>
-              <MenuItem onClick={handleClose}>Schedule</MenuItem>
-              <MenuItem onClick={handleClose}>Genre</MenuItem>
-              <MenuItem onClick={handleClose}>Season</MenuItem>
+              <Link to="/top" style={linkStyle}>
+                <MenuItem onClick={handleClose}>Top</MenuItem>
+              </Link>
+              <Link to="/schedule" style={linkStyle}>
+                <MenuItem onClick={handleClose}>Schedule</MenuItem>
+              </Link>
+              <Link to="/genre" style={linkStyle}>
+                <MenuItem onClick={handleClose}>Genre</MenuItem>
+              </Link>
+              <Link to="/season" style={linkStyle}>
+                <MenuItem onClick={handleClose}>Season</MenuItem>
+              </Link>
             </Menu>
           </div>
         </Toolbar>

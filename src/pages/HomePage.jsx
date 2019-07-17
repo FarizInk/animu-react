@@ -8,8 +8,8 @@ class HomePage extends Component {
       <Fragment>
         <h2>Home Page </h2>
         <p>
-          <Link to="/farizink">FarizInk</Link> on GitHub.
-      </p>
+          <Link to="/user/farizink">FarizInk</Link> on GitHub.
+        </p>
       </Fragment>
     )
   }
