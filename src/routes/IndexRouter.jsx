@@ -11,7 +11,7 @@ export default function IndexRouter() {
   return (
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/top" component={TopPage} />
+        <Route path="/top/:type/:page" component={TopPage} />
         <Route path="/schedule" component={SchedulePage} />
         <Route path="/genre" component={GenrePage} />
         <Route path="/season" component={SeasonPage} />

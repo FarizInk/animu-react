@@ -80,7 +80,7 @@ export default function Nav() {
               open={open}
               onClose={handleClose}
             >
-              <Link to="/top" style={linkStyle}>
+              <Link to="/top/upcoming/1" style={linkStyle}>
                 <MenuItem onClick={handleClose}>Top</MenuItem>
               </Link>
               <Link to="/schedule" style={linkStyle}>
