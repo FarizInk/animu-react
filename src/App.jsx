@@ -27,7 +27,7 @@ function Theme() {
   return (
     <MuiThemeProvider theme={theme}>
       <Nav />
-      <main style={{ marginTop: 100 }}>
+      <main style={{ marginTop: 30 }}>
         <Container maxWidth="lg">
           <IndexRouter />
         </Container>
