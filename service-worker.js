@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/animu/precache-manifest.eabce32ef30ae3fcb8083c6a3ab91d34.js"
+  "/animu/precache-manifest.0497ad030a051a90c1d49e64ba76acbd.js"
 );
 
 self.addEventListener('message', (event) => {
