@@ -23,9 +23,9 @@ const CategoriesButton = (props) => {
         window.scrollTo(0, 0)
         await axios(`${process.env.REACT_APP_API_URL}top/anime/${page}/${type}`)
         .then(response => {
-            props.handleType({
+            props.handleTop({
                 type: name,
-                page: props.dataSubPage.page,
+                page: 1,
                 data: response.data.top
             })
             props.handleLoading(false)
@@ -60,7 +60,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchtoProps = (dispatch) => {
     return {
-        handleType: (value) => dispatch({
+        handleTop: (value) => dispatch({
             type: 'HANDLE_' + identifyPage.toUpperCase(),
             data: value
         }),

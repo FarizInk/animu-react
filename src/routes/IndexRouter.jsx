@@ -6,14 +6,16 @@ import SchedulePage from "../pages/SchedulePage"
 import GenrePage from "../pages/GenrePage"
 import SeasonPage from "../pages/SeasonPage"
 
-export default function IndexRouter() {
+const IndexRouter = () => {
   return (
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/top/:type/:page" component={TopPage} />
-        <Route path="/schedule" component={SchedulePage} />
-        <Route path="/genre" component={GenrePage} />
-        <Route path="/season" component={SeasonPage} />
-      </Switch>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/top/:type/:page" component={TopPage} />
+      <Route path="/schedule" component={SchedulePage} />
+      <Route path="/genre" component={GenrePage} />
+      <Route path="/season" component={SeasonPage} />
+    </Switch>
   );
 }
+
+export default IndexRouter

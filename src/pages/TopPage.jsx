@@ -10,9 +10,9 @@ import '../css/CardsPage.css'
 
 class TopPage extends Component {
     constructor(props) {
-        super(props);
-        this.type = props.match.params.type;
-        this.page = props.match.params.page;
+        super(props)
+        this.type = props.match.params.type
+        this.page = props.match.params.page
     }
 
     getData(type, page) {
@@ -20,7 +20,7 @@ class TopPage extends Component {
         window.scrollTo(0, 0);
         axios(`${process.env.REACT_APP_API_URL}top/anime/${page}/${type}`)
             .then(response => {
-                this.props.handleType({
+                this.props.handleTop({
                     type: this.props.dataTop.type,
                     page: this.props.dataTop.page,
                     data: response.data.top
@@ -58,18 +58,15 @@ class TopPage extends Component {
                     ))}
                 </Grid>
             )
-            // data = <div>{ this.props.dataTop.page }</div>
         }
+        let categoriesData = ['upcoming', 'airing', 'tv', 'movie', 'ova', 'special']
         return (
             <Fragment>
                 <div className="card-container">
                     <div className="categories">
-                        <CategoriesButton name="upcoming" link="/top/upcoming/1" type={this.type} />
-                        <CategoriesButton name="airing" link="/top/airing/1" type={this.type} />
-                        <CategoriesButton name="tv" link="/top/tv/1" type={this.type} />
-                        <CategoriesButton name="movie" link="/top/movie/1" type={this.type} />
-                        <CategoriesButton name="ova" link="/top/ova/1" type={this.type} />
-                        <CategoriesButton name="special" link="/top/special/1" type={this.type} />
+                        {categoriesData.map((category, index) => (
+                            <CategoriesButton name={category} link={`/top/${category}/${this.props.dataTop.page}`} type={this.type} key={index} />
+                        ))}
                     </div>
                     {data}
                     <SimplePagination pageNumber={this.page} pageType={this.type} />
@@ -88,7 +85,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchtoProps = (dispatch) => {
     return {
-        handleType: (value) => dispatch({
+        handleTop: (value) => dispatch({
             type: 'HANDLE_TOP',
             data: value
         }),

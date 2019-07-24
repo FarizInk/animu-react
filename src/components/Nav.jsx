@@ -8,6 +8,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,7 +34,8 @@ const linkStyle = {
   fontWeight: 500
 };
 
-export default function Nav() {
+const Nav = (props) => {
+  console.log(props.data);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -80,7 +82,7 @@ export default function Nav() {
               open={open}
               onClose={handleClose}
             >
-              <Link to="/top/upcoming/1" style={linkStyle}>
+              <Link to={`/top/${props.data.top.type}/${props.data.top.page}`} style={linkStyle}>
                 <MenuItem onClick={handleClose}>Top</MenuItem>
               </Link>
               <Link to="/schedule" style={linkStyle}>
@@ -99,3 +101,11 @@ export default function Nav() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+      data: state
+  }
+}
+
+export default connect(mapStateToProps)(Nav)
