@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "378e4a4b6985bfe4c737c9ac4ee3e402",
+    "revision": "8869c650996e94ea2b354cbf01f03d84",
     "url": "/animu/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/animu/static/css/2.2c0d4364.chunk.css"
   },
   {
-    "revision": "1bbd66f830175867a433",
+    "revision": "4ebd8fbbd9468543440d",
     "url": "/animu/static/css/main.a551e062.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/animu/static/js/2.df4a01d2.chunk.js"
   },
   {
-    "revision": "1bbd66f830175867a433",
-    "url": "/animu/static/js/main.a5b42f43.chunk.js"
+    "revision": "4ebd8fbbd9468543440d",
+    "url": "/animu/static/js/main.db9e9a93.chunk.js"
   },
   {
     "revision": "9a772f6396954a4c309b",
