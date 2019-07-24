@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
-var identifyPage = window.location.href.split('/')[3]
-
 const useStyles = makeStyles(theme => ({
     margin: {
         margin: theme.spacing(1)
@@ -52,17 +50,17 @@ const CategoriesButton = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    console.log(identifyPage)
+const mapStateToProps = (state, props) => {
     return {
-        dataSubPage: state[identifyPage]
+        dataSubPage: state[props.link.split('/')[1]],
+        pagePosition: state.pagePosition
     }
 }
 
-const mapDispatchtoProps = (dispatch) => {
+const mapDispatchtoProps = (dispatch, props) => {
     return {
         handleTop: (value) => dispatch({
-            type: 'HANDLE_' + identifyPage.toUpperCase(),
+            type: 'HANDLE_' + props.link.split('/')[1].toUpperCase(),
             data: value
         }),
         handleLoading: (value) => dispatch({

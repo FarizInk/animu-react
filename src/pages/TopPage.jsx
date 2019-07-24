@@ -32,8 +32,13 @@ class TopPage extends Component {
             })
     }
 
+    setPagePosition() {
+        this.props.handlePagePosition('top')
+    }
+
     componentDidMount() {
         document.title = "Top " + this.type.charAt(0).toUpperCase() + this.type.slice(1) + " - " + process.env.REACT_APP_NAME
+        this.setPagePosition()
         this.getData(this.type, this.page)
     }
 
@@ -79,7 +84,8 @@ class TopPage extends Component {
 const mapStateToProps = (state) => {
     return {
         dataTop: state.top,
-        loading: state.loading
+        loading: state.loading,
+        pagePosition: state.pagePosition
     }
 }
 
@@ -91,6 +97,10 @@ const mapDispatchtoProps = (dispatch) => {
         }),
         handleLoading: (value) => dispatch({
             type: 'HANDLE_LOADING',
+            data: value
+        }),
+        handlePagePosition: (value) => dispatch({
+            type: 'HANDLE_PAGE_POSITION',
             data: value
         })
     }
