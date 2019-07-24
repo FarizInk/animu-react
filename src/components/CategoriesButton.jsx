@@ -53,6 +53,7 @@ const CategoriesButton = (props) => {
 }
 
 const mapStateToProps = (state) => {
+    console.log(identifyPage)
     return {
         dataSubPage: state[identifyPage]
     }

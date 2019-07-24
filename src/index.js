@@ -12,7 +12,7 @@ dotenv.config()
 
 render(
   <Provider store={storeRedux}>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.REACT_APP_BASE_URL}>
       <App />
     </BrowserRouter>
   </Provider>,
