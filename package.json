@@ -12,6 +12,7 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "react-slick": "^0.24.0",
+    "redux": "^4.0.4",
     "typeface-roboto": "0.0.54"
   },
   "scripts": {
