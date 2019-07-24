@@ -3,6 +3,7 @@ import CategoriesButton from '../components/CategoriesButton'
 import axios from 'axios'
 import SimpleCard from '../components/SimpleCard'
 import { Grid } from '@material-ui/core'
+import SimplePagination from '../components/SimplePagination'
 import '../css/CategoriesMenu.css'
 import '../css/CardsPage.css'
 
@@ -38,6 +39,7 @@ class TopPage extends Component {
 
     componentWillUpdate(props) {
         this.type = props.match.params.type;
+        this.page = props.match.params.page;
     }
 
     componentDidUpdate() {
@@ -69,6 +71,7 @@ class TopPage extends Component {
                         <CategoriesButton name="special" link="/top/special/1" type={this.type} />
                     </div>
                     {data}
+                    <SimplePagination pageNumber={this.page} pageType={this.type} />
                 </div>
             </Fragment>
         );
