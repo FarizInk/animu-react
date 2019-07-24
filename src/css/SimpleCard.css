@@ -1,0 +1,49 @@
+.card {
+    width: 31%;
+    margin: 10px 1%;
+    position: relative;
+}
+
+.score {
+    margin-left: 12px;
+}
+
+.top-side {
+    position: absolute;
+    z-index: 1;
+    margin: 12px;
+}
+
+.card-image {
+    height: 430px;
+}
+
+.description {
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+    height: 2.5em;
+    line-height: 1.3;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 1200px) {
+    .card {
+        width: 48%;
+    }
+    .card-image {
+        height: 490px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 98%;
+    }
+    .card-image {
+        height: 450px;
+    }
+}

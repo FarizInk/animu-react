@@ -2,7 +2,9 @@ import React, { Component, Fragment } from 'react'
 import CategoriesButton from '../components/CategoriesButton'
 import axios from 'axios'
 import SimpleCard from '../components/SimpleCard'
-import { Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core'
+import '../css/CategoriesMenu.css'
+import '../css/CardsPage.css'
 
 class TopPage extends Component {
     constructor(props) {
@@ -23,7 +25,6 @@ class TopPage extends Component {
                     datas: response.data,
                     loading: false
                 })
-                console.log(response.data)
             })
             .catch(function (error) {
                 console.log(error)
@@ -44,7 +45,7 @@ class TopPage extends Component {
     }
 
     render() {
-        let data;
+        let data
         if (this.state.loading === true) {
             data = <div>Loading...</div>
         } else {
@@ -58,15 +59,17 @@ class TopPage extends Component {
         }
         return (
             <Fragment>
-                <div style={{ marginBottom: 12, marginLeft: -8 }}>
-                    <CategoriesButton name="upcoming" link="/top/upcoming/1" type={this.type} />
-                    <CategoriesButton name="airing" link="/top/airing/1" type={this.type} />
-                    <CategoriesButton name="tv" link="/top/tv/1" type={this.type} />
-                    <CategoriesButton name="movie" link="/top/movie/1" type={this.type} />
-                    <CategoriesButton name="ova" link="/top/ova/1" type={this.type} />
-                    <CategoriesButton name="special" link="/top/special/1" type={this.type} />
+                <div className="card-container">
+                    <div className="categories">
+                        <CategoriesButton name="upcoming" link="/top/upcoming/1" type={this.type} />
+                        <CategoriesButton name="airing" link="/top/airing/1" type={this.type} />
+                        <CategoriesButton name="tv" link="/top/tv/1" type={this.type} />
+                        <CategoriesButton name="movie" link="/top/movie/1" type={this.type} />
+                        <CategoriesButton name="ova" link="/top/ova/1" type={this.type} />
+                        <CategoriesButton name="special" link="/top/special/1" type={this.type} />
+                    </div>
+                    {data}
                 </div>
-                {data}
             </Fragment>
         );
     }
