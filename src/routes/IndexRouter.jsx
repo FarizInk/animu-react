@@ -5,7 +5,6 @@ import TopPage from "../pages/TopPage"
 import SchedulePage from "../pages/SchedulePage"
 import GenrePage from "../pages/GenrePage"
 import SeasonPage from "../pages/SeasonPage"
-import UserPage from "../pages/UserPage"
 
 export default function IndexRouter() {
   return (
@@ -15,7 +14,6 @@ export default function IndexRouter() {
         <Route path="/schedule" component={SchedulePage} />
         <Route path="/genre" component={GenrePage} />
         <Route path="/season" component={SeasonPage} />
-        <Route path="/user/:id" component={UserPage} />
       </Switch>
   );
 }
