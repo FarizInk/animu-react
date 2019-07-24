@@ -30,7 +30,6 @@ const linkStyle = {
 };
 
 const Nav = (props) => {
-  console.log(props.data);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
