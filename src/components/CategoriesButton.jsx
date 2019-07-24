@@ -18,10 +18,10 @@ const CategoriesButton = (props) => {
     const name = props.name
     const pageType = props.type
 
-    const getData = async (type, page) => {
+    const getData = (type, page) => {
         props.handleLoading(true)
         window.scrollTo(0, 0)
-        await axios(`${process.env.REACT_APP_API_URL}top/anime/${page}/${type}`)
+        axios(`${process.env.REACT_APP_API_URL}top/anime/${page}/${type}`)
         .then(response => {
             props.handleTop({
                 type: name,
