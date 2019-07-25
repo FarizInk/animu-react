@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Toolbar, Typography, IconButton, MenuItem, Menu, SwipeableDrawer, List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core';
-import { ExpandMore, MoveToInbox, Mail } from '@material-ui/icons';
+import { AppBar, Toolbar, Typography, IconButton, MenuItem, Menu, SwipeableDrawer } from '@material-ui/core';
+import { ExpandMore } from '@material-ui/icons';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import '../css/Nav.css'
@@ -44,23 +44,18 @@ const Nav = (props) => {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <MoveToInbox /> : <Mail />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <MoveToInbox /> : <Mail />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <Link to={`/top/${props.data.top.type}/${props.data.top.page}`} className="link">
+        <MenuItem onClick={handleClose}>Top</MenuItem>
+      </Link>
+      <Link to="/schedule" className="link">
+        <MenuItem onClick={handleClose}>Schedule</MenuItem>
+      </Link>
+      <Link to="/genre" className="link">
+        <MenuItem onClick={handleClose}>Genre</MenuItem>
+      </Link>
+      <Link to="/season" className="link">
+        <MenuItem onClick={handleClose}>Season</MenuItem>
+      </Link>
     </div>
   );
 
