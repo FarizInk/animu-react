@@ -20,17 +20,19 @@ const CategoriesButton = (props) => {
         props.handleLoading(true)
         window.scrollTo(0, 0)
         axios(`${process.env.REACT_APP_API_URL}top/anime/${page}/${type}`)
-        .then(response => {
-            props.handleTop({
-                type: name,
-                page: 1,
-                data: response.data.top
+            .then(response => {
+                props.handleTop({
+                    type: name,
+                    page: 1,
+                    data: response.data.top
+                })
+                setTimeout(function () {
+                    props.handleLoading(false)
+                }, 1500)
             })
-            props.handleLoading(false)
-        })
-        .catch(function (error) {
-            console.log(error)
-        })
+            .catch(function (error) {
+                console.log(error)
+            })
     }
 
     return (

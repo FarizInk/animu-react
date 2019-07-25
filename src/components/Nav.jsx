@@ -1,9 +1,10 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Toolbar, Typography, IconButton, MenuItem, Menu } from '@material-ui/core';
-import { ExpandMore } from '@material-ui/icons';
+import { AppBar, Toolbar, Typography, IconButton, MenuItem, Menu, SwipeableDrawer, List, ListItem, ListItemIcon, ListItemText, Divider } from '@material-ui/core';
+import { ExpandMore, MoveToInbox, Mail } from '@material-ui/icons';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import '../css/Nav.css'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,24 +16,54 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  fullList: {
+    width: 'auto',
+  },
 }));
-
-const titleStyle = {
-  color: 'white',
-  textDecoration: "none"
-};
-
-const linkStyle = {
-  color: 'black',
-  textDecoration: "none",
-  textTransform: 'uppercase',
-  fontWeight: 500
-};
 
 const Nav = (props) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const [state, setState] = React.useState({
+    top: false,
+  });
+
+  const toggleDrawer = (side, open) => event => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [side]: open });
+  };
+
+  const fullList = side => (
+    <div
+      className={classes.fullList}
+      role="presentation"
+      onClick={toggleDrawer(side, false)}
+      onKeyDown={toggleDrawer(side, false)}
+    >
+      <List>
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <MoveToInbox /> : <Mail />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <MoveToInbox /> : <Mail />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
+
 
   function handleMenu(event) {
     setAnchorEl(event.currentTarget);
@@ -42,12 +73,13 @@ const Nav = (props) => {
     setAnchorEl(null);
   }
 
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            <Link to="/" style={titleStyle}>
+            <Link to="/" className="title">
               {process.env.REACT_APP_NAME}
             </Link>
           </Typography>
@@ -58,9 +90,20 @@ const Nav = (props) => {
               aria-haspopup="true"
               onClick={handleMenu}
               color="inherit"
+              className="icon-desktop"
             >
               <ExpandMore />
             </IconButton>
+            {/* Mobile Version */}
+            <IconButton
+              aria-label="More"
+              onClick={toggleDrawer('top', true)}
+              color="inherit"
+              className="icon-mobile"
+            >
+              <ExpandMore />
+            </IconButton>
+            {/* END Mobile Version */}
             <Menu
               id="expand-more"
               anchorEl={anchorEl}
@@ -76,29 +119,38 @@ const Nav = (props) => {
               open={open}
               onClose={handleClose}
             >
-              <Link to={`/top/${props.data.top.type}/${props.data.top.page}`} style={linkStyle}>
+              <Link to={`/top/${props.data.top.type}/${props.data.top.page}`} className="link">
                 <MenuItem onClick={handleClose}>Top</MenuItem>
               </Link>
-              <Link to="/schedule" style={linkStyle}>
+              <Link to="/schedule" className="link">
                 <MenuItem onClick={handleClose}>Schedule</MenuItem>
               </Link>
-              <Link to="/genre" style={linkStyle}>
+              <Link to="/genre" className="link">
                 <MenuItem onClick={handleClose}>Genre</MenuItem>
               </Link>
-              <Link to="/season" style={linkStyle}>
+              <Link to="/season" className="link">
                 <MenuItem onClick={handleClose}>Season</MenuItem>
               </Link>
             </Menu>
           </div>
         </Toolbar>
       </AppBar>
+      <SwipeableDrawer
+        anchor="top"
+        open={state.top}
+        onClose={toggleDrawer('top', false)}
+        onOpen={toggleDrawer('top', true)}
+        className="swipeable-menu"
+      >
+        {fullList('top')}
+      </SwipeableDrawer>
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
   return {
-      data: state
+    data: state
   }
 }
 

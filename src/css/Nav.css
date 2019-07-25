@@ -1,0 +1,23 @@
+.title {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.link {
+    color: black !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    font-weight: 500 !important;
+}
+.icon-mobile, .swipeable-menu {
+    display: none !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .icon-mobile, .swipeable-menu {
+        display: block !important;
+    }
+    .icon-desktop {
+        display: none !important;
+    }
+}

@@ -25,7 +25,13 @@ class TopPage extends Component {
                     page: this.props.dataTop.page,
                     data: response.data.top
                 })
-                this.props.handleLoading(false)
+                setTimeout(
+                    function() {
+                        this.props.handleLoading(false)
+                    }
+                    .bind(this),
+                    3000
+                )
             })
             .catch(function (error) {
                 console.log(error)
