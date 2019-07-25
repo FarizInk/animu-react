@@ -12,7 +12,7 @@ class HomePage extends Component {
       <Fragment>
         <h2>Home Page </h2>
         <p>
-          <Link to="/user/farizink">FarizInk</Link> on GitHub.
+          Welcome to animu. deployed 25 jul 2019, 15:48PM, Dev Version.
         </p>
       </Fragment>
     )
