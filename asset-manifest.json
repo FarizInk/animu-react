@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/animu/static/css/main.a551e062.chunk.css",
-    "main.js": "/animu/static/js/main.aa436506.chunk.js",
-    "main.js.map": "/animu/static/js/main.aa436506.chunk.js.map",
+    "main.css": "/animu/static/css/main.09d1068d.chunk.css",
+    "main.js": "/animu/static/js/main.366061f6.chunk.js",
+    "main.js.map": "/animu/static/js/main.366061f6.chunk.js.map",
     "runtime~main.js": "/animu/static/js/runtime~main.25f5b635.js",
     "runtime~main.js.map": "/animu/static/js/runtime~main.25f5b635.js.map",
     "static/css/2.2c0d4364.chunk.css": "/animu/static/css/2.2c0d4364.chunk.css",
-    "static/js/2.eb3e3275.chunk.js": "/animu/static/js/2.eb3e3275.chunk.js",
-    "static/js/2.eb3e3275.chunk.js.map": "/animu/static/js/2.eb3e3275.chunk.js.map",
+    "static/js/2.15ef9d24.chunk.js": "/animu/static/js/2.15ef9d24.chunk.js",
+    "static/js/2.15ef9d24.chunk.js.map": "/animu/static/js/2.15ef9d24.chunk.js.map",
     "index.html": "/animu/index.html",
-    "precache-manifest.0497ad030a051a90c1d49e64ba76acbd.js": "/animu/precache-manifest.0497ad030a051a90c1d49e64ba76acbd.js",
+    "precache-manifest.8795d8a7b48df4fdc23604bd4650c2bf.js": "/animu/precache-manifest.8795d8a7b48df4fdc23604bd4650c2bf.js",
     "service-worker.js": "/animu/service-worker.js",
     "static/css/2.2c0d4364.chunk.css.map": "/animu/static/css/2.2c0d4364.chunk.css.map",
-    "static/css/main.a551e062.chunk.css.map": "/animu/static/css/main.a551e062.chunk.css.map",
+    "static/css/main.09d1068d.chunk.css.map": "/animu/static/css/main.09d1068d.chunk.css.map",
     "static/media/index.css": "/animu/static/media/roboto-latin-900italic.bc833e72.woff"
   }
 }
