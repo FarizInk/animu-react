@@ -1,10 +1,10 @@
-import React from "react"
-import { Route, Switch } from "react-router-dom"
-import HomePage from "../pages/HomePage"
-import TopPage from "../pages/TopPage"
-import SchedulePage from "../pages/SchedulePage"
-import GenrePage from "../pages/GenrePage"
-import SeasonPage from "../pages/SeasonPage"
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import HomePage from "../pages/HomePage";
+import TopPage from "../pages/TopPage";
+import SchedulePage from "../pages/SchedulePage";
+import GenrePage from "../pages/GenrePage";
+import SeasonPage from "../pages/SeasonPage";
 
 const IndexRouter = () => {
   return (
@@ -16,6 +16,6 @@ const IndexRouter = () => {
       <Route path="/season" component={SeasonPage} />
     </Switch>
   );
-}
+};
 
-export default IndexRouter
+export default IndexRouter;

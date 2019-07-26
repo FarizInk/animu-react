@@ -1,36 +1,48 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Toolbar, Typography, IconButton, MenuItem, Menu, SwipeableDrawer } from '@material-ui/core';
-import { ExpandMore } from '@material-ui/icons';
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import '../css/Nav.css'
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  MenuItem,
+  Menu,
+  SwipeableDrawer
+} from "@material-ui/core";
+import { ExpandMore } from "@material-ui/icons";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import "../css/Nav.css";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   fullList: {
-    width: 'auto',
-  },
+    width: "auto"
+  }
 }));
 
-const Nav = (props) => {
+const Nav = props => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const [state, setState] = React.useState({
-    top: false,
+    top: false
   });
 
   const toggleDrawer = (side, open) => event => {
-    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
       return;
     }
 
@@ -44,7 +56,10 @@ const Nav = (props) => {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
-      <Link to={`/top/${props.data.top.type}/${props.data.top.page}`} className="link">
+      <Link
+        to={`/top/${props.data.top.type}/${props.data.top.page}`}
+        className="link"
+      >
         <MenuItem onClick={handleClose}>Top</MenuItem>
       </Link>
       <Link to="/schedule" className="link">
@@ -59,7 +74,6 @@ const Nav = (props) => {
     </div>
   );
 
-
   function handleMenu(event) {
     setAnchorEl(event.currentTarget);
   }
@@ -67,7 +81,6 @@ const Nav = (props) => {
   function handleClose() {
     setAnchorEl(null);
   }
-
 
   return (
     <div className={classes.root}>
@@ -92,7 +105,7 @@ const Nav = (props) => {
             {/* Mobile Version */}
             <IconButton
               aria-label="More"
-              onClick={toggleDrawer('top', true)}
+              onClick={toggleDrawer("top", true)}
               color="inherit"
               className="icon-mobile"
             >
@@ -103,18 +116,21 @@ const Nav = (props) => {
               id="expand-more"
               anchorEl={anchorEl}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right"
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right"
               }}
               open={open}
               onClose={handleClose}
             >
-              <Link to={`/top/${props.data.top.type}/${props.data.top.page}`} className="link">
+              <Link
+                to={`/top/${props.data.top.type}/${props.data.top.page}`}
+                className="link"
+              >
                 <MenuItem onClick={handleClose}>Top</MenuItem>
               </Link>
               <Link to="/schedule" className="link">
@@ -133,20 +149,20 @@ const Nav = (props) => {
       <SwipeableDrawer
         anchor="top"
         open={state.top}
-        onClose={toggleDrawer('top', false)}
-        onOpen={toggleDrawer('top', true)}
+        onClose={toggleDrawer("top", false)}
+        onOpen={toggleDrawer("top", true)}
         className="swipeable-menu"
       >
-        {fullList('top')}
+        {fullList("top")}
       </SwipeableDrawer>
     </div>
   );
-}
+};
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     data: state
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps)(Nav)
+export default connect(mapStateToProps)(Nav);

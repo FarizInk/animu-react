@@ -1,7 +1,7 @@
-import React, { Fragment, Component } from "react"
-import Nav from "./components/Nav"
-import Footer from "./components/Footer"
-import IndexRouter from "./routes/IndexRouter"
+import React, { Fragment, Component } from "react";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import IndexRouter from "./routes/IndexRouter";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
@@ -34,19 +34,18 @@ function Theme() {
       </main>
       <Footer />
     </MuiThemeProvider>
-  )
+  );
 }
 
 class App extends Component {
-
   render() {
     return (
       <Fragment>
         <CssBaseline />
         <Theme />
       </Fragment>
-    )
+    );
   }
 }
 
-export default App
+export default App;

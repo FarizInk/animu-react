@@ -1,6 +1,4 @@
-
-import React, { Component, Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component, Fragment } from "react";
 
 class HomePage extends Component {
   componentDidMount() {
@@ -11,12 +9,10 @@ class HomePage extends Component {
     return (
       <Fragment>
         <h2>Home Page </h2>
-        <p>
-          Welcome to animu. deployed 25 jul 2019, 15:48PM, Dev Version.
-        </p>
+        <p>Welcome to animu. deployed 25 jul 2019, 15:48PM, Dev Version.</p>
       </Fragment>
-    )
+    );
   }
 }
 
-export default HomePage
+export default HomePage;
