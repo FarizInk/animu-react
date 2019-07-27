@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from "react";
 import CategoriesButton from "../components/CategoriesButton";
 import axios from "axios";
-import SimpleCard from "../components/SimpleCard";
+import {
+  HorizontalSimpleCard,
+  VerticalSimpleCard
+} from "../components/SimpleCard";
 import { Grid } from "@material-ui/core";
 import SimplePagination from "../components/SimplePagination";
 import { connect } from "react-redux";
@@ -25,12 +28,12 @@ class TopPage extends Component {
           page: this.props.dataTop.page,
           data: response.data.top
         });
-        setTimeout(
-          function() {
-            this.props.handleLoading(false);
-          }.bind(this),
-          3000
-        );
+        // setTimeout(
+        //   function() {
+        //     this.props.handleLoading(false);
+        //   }.bind(this),
+        //   3000
+        // );
       })
       .catch(function(error) {
         console.log(error);
@@ -72,11 +75,18 @@ class TopPage extends Component {
       data = <div>Loading...</div>;
     } else {
       data = (
-        <Grid container spacing={3}>
-          {this.props.dataTop.data.map((anime, index) => (
-            <SimpleCard data={anime} key={index} />
-          ))}
-        </Grid>
+        <div>
+          <Grid className="desktop-container">
+            {this.props.dataTop.data.map((anime, index) => (
+              <VerticalSimpleCard data={anime} key={index} />
+            ))}
+          </Grid>
+          <Grid className="mobile-container">
+            {this.props.dataTop.data.map((anime, index) => (
+              <HorizontalSimpleCard data={anime} key={index} />
+            ))}
+          </Grid>
+        </div>
       );
     }
     let categoriesData = [

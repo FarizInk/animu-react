@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import "../css/SimpleCard.css";
 
-export default function SimpleCard2(props) {
+export const VerticalSimpleCard = props => {
   const data = props.data;
   let score;
   if (data.score !== 0) {
@@ -19,7 +19,48 @@ export default function SimpleCard2(props) {
   }
 
   return (
-    <Card className="card">
+    <Card className="vertical-card">
+      <CardMedia
+        className="vertical-cover"
+        image={data.image_url}
+        title={data.title}
+      />
+      <div className="vertical-details">
+        <div style={{ marginLeft: 12, marginTop: 12 }}>
+          <Chip label={<b>{data.rank}</b>} color="primary" className="rank" />
+          {score}
+        </div>
+        <CardContent className="vertical-content">
+          <Typography component="h5" variant="h5" className="card-title">
+            {data.title}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            {data.type}
+            {data.episodes !== null ? ", " + data.episodes + " Episodes" : ""}
+          </Typography>
+        </CardContent>
+        <div className="vertical-control">
+          <Button size="small" color="primary">
+            Share
+          </Button>
+          <Button size="small" color="primary">
+            Learn More
+          </Button>
+        </div>
+      </div>
+    </Card>
+  );
+};
+
+export const HorizontalSimpleCard = props => {
+  const data = props.data;
+  let score;
+  if (data.score !== 0) {
+    score = <Chip label={`Score : ` + data.score} className="score" />;
+  }
+
+  return (
+    <Card className="horizontal-card">
       <div className="top-side">
         <Chip label={<b>{data.rank}</b>} color="primary" className="rank" />
         {score}
@@ -28,7 +69,7 @@ export default function SimpleCard2(props) {
         <CardMedia
           component="img"
           alt={data.title}
-          className="card-image"
+          className="horizontal-cover"
           image={data.image_url}
           title={data.title}
         />
@@ -37,7 +78,7 @@ export default function SimpleCard2(props) {
             gutterBottom
             variant="h5"
             component="h2"
-            className="description"
+            className="card-title"
           >
             {data.title}
           </Typography>
@@ -57,4 +98,4 @@ export default function SimpleCard2(props) {
       </CardActions>
     </Card>
   );
-}
+};

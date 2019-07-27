@@ -3,9 +3,26 @@
     margin: 0 10%;
 }
 
+.desktop-container {
+  display: block;
+}
+
+.mobile-container {
+  display: none;
+}
+
 @media only screen and (max-width: 1200px) {
     .card-container {
         width: 100%;
         margin: 0 0%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .desktop-container {
+      display: none;
+    }
+    .mobile-container {
+      display: block;
     }
 }
