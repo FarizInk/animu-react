@@ -1,0 +1,15 @@
+---
+application:
+  name: "animu-react"
+  project: "test"
+  organization: "QoveryCommunity"
+databases:
+- type: "MYSQL"
+  name: "animu"
+  version: "8.0"
+routers:
+- name: "main-animu-react"
+  routes:
+  - application_name: "animu-react"
+    paths:
+    - "/*"
